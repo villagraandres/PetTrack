@@ -7,6 +7,9 @@ from django.shortcuts import render
 from .models import User
 import secrets
 import string
+from django.core.mail import send_mail
+from django.db import IntegrityError
+
 
 
 # Create your views here.
@@ -16,7 +19,7 @@ def index(request):
 
 def register(request):
     if request.method=='POST':
-        username=request.POST['name'];
+        firstname=request.POST['name'];
         email=request.POST['email'];
         password=request.POST['password'];
         
@@ -34,12 +37,40 @@ def register(request):
         else:
             alphabet = string.ascii_letters + string.digits
             code = ''.join(secrets.choice(alphabet) for i in range(16))
-            user = User(username=username,email=email,code=code)
-            user.set_password(password)
-            user.save();
-            return render(request,'login/mail.html',{'mail':email})
+            try:
+                user = User(username=email,first_name=firstname,email=email,code=code)
+                user.set_password(password)
+                user.save();
+            except IntegrityError:
+                return render(request,'login/register.html',{'error':'Email already exists'})
+            
+            activation_link = f'http://127.0.0.1:8000/confirm/{code}'
+
+            send_mail(
+                "Confirm your Account",
+               f"Click on the following link to activate your account: {activation_link}",
+                "from@example.com",
+                [email],
+                fail_silently=False,
+            )
+            return render(request,'login/email.html',{'mail':email})
 
        
     else:
         return render(request,'login/register.html')
+    
+
+def email(request):
+    pass
+
+def confirm(request,num):
+    try:
+        user=User.objects.get(code=num)
+    except User.DoesNotExist:
+        return render(request,'login/confirm.html',{'message':'This is code is invalid or is already has been used'})
+    else:
+        user.auth = True
+        user.code=''
+        user.save()
+        return render(request, 'success.html', {'message': 'Your account has been confirmed'})
     

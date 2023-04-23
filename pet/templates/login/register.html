@@ -5,11 +5,10 @@
 {% block body %}
 
 
-<div class="container index">
+<div class="container index mt-4">
     <div class="brand">
         <h1 class="text-gradient">PetTrack <i class="fa-solid fa-shield-cat"></i> </h1>
         <p class="slogan">Keeping your pets on track </p>
-
     </div>
 
     <div class="form">
@@ -20,6 +19,7 @@
               {% for error in errors  %}
                 <p>{{error}}</p>
               {% endfor %}
+             {{error}} 
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>

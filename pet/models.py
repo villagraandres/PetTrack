@@ -9,6 +9,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     code=models.CharField(max_length=16,blank=True);
     auth=models.BooleanField(default=False)
+    name=models.CharField(max_length=60)
     
     groups = models.ManyToManyField(
         'auth.Group',
