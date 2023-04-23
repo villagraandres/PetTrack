@@ -37,6 +37,10 @@ body{
   .btn-custom:hover {
     background-color: #d4431c;
   }
+
+  .disable{
+    opacity: 0.5;
+  }
 .index{
     display: flex;
     flex-direction: column;
@@ -57,3 +61,4 @@ body{
     padding: 0;
     margin: 0;
 }
+

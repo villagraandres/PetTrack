@@ -3,6 +3,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 #import render
 from django.shortcuts import render
+#import models
+from .models import User
+import secrets
+import string
+
 
 # Create your views here.
 
@@ -11,6 +16,10 @@ def index(request):
 
 def register(request):
     if request.method=='POST':
+        username=request.POST['name'];
+        email=request.POST['email'];
+        password=request.POST['password'];
+        
 
         inputs=['name','email','password','password2']
         errors=[]
@@ -23,7 +32,12 @@ def register(request):
         if len(errors)>=1:     
             return render(request,'login/register.html',{'errors':errors})
         else:
-            pass
+            alphabet = string.ascii_letters + string.digits
+            code = ''.join(secrets.choice(alphabet) for i in range(16))
+            user = User(username=username,email=email,code=code)
+            user.set_password(password)
+            user.save();
+            return render(request,'login/mail.html',{'mail':email})
 
        
     else:
