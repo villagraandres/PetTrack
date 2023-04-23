@@ -10,16 +10,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/4b8118d347.js" crossorigin="anonymous"></script>
     <link href="{% static 'pets/styles.css' %}" rel="stylesheet">
-    
+    <script src="https://kit.fontawesome.com/6c76bbdb90.js" crossorigin="anonymous"></script>
     <title>Name</title>
 </head>
 <body>
 
-    <i class="fa-thin fa-house"></i>
+
     {% block body %}
     {% endblock body %}
 
 </body>
+{% block script %}
+
+{% endblock script %}
 </html>
