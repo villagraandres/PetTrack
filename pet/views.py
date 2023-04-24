@@ -16,7 +16,28 @@ from django.contrib.auth import login
 # Create your views here.
 
 def index(request):
-    return render(request,'login/index.html')
+
+    if request.method=='POST':
+        email=request.POST.get('email');
+        password=request.POST.get('password');
+        try:
+            user=User.objects.get(username=email);
+        except User.DoesNotExist:
+            return render(request,'login/index.html',{'error':'User dont exist'})
+        
+        if user.check_password(password):
+            if user.auth:
+                login(request,user)
+                return render(request,'auth/home.html')
+            else:
+                return render(request,'login/index.html',{'error':'Please confirm your account'})
+        else:
+            return render(request,'login/index.html',{'error':'Wrong password'})
+        
+
+    else:
+        return render(request,'login/index.html')
+    
 
 def register(request):
     if request.method=='POST':
