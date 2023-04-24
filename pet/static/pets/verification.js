@@ -29,7 +29,7 @@ function verificate(){
         disable()
 
     })
-    password2.addEventListener('blur',()=>{
+    password2.addEventListener('input',()=>{
         if (password2.value.trim()==''){
             password2.classList.add('border','border-danger')
         }else{

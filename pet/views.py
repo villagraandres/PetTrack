@@ -9,6 +9,7 @@ import secrets
 import string
 from django.core.mail import send_mail
 from django.db import IntegrityError
+from django.contrib.auth import login
 
 
 
@@ -48,10 +49,11 @@ def register(request):
 
             send_mail(
                 "Confirm your Account",
-               f"Click on the following link to activate your account: {activation_link}",
+                "",
                 "from@example.com",
                 [email],
                 fail_silently=False,
+                html_message=f" <h1>Hi {firstname} your account has been created!</h1> <p>Click <a href='{activation_link}'>here</a> to activate it</p>"
             )
             return render(request,'login/email.html',{'mail':email})
 
@@ -72,5 +74,10 @@ def confirm(request,num):
         user.auth = True
         user.code=''
         user.save()
-        return render(request, 'success.html', {'message': 'Your account has been confirmed'})
+        login(request,user)
+        return render(request, 'login/confirm.html', {'message': 'Your account has been confirmed'})
     
+
+
+def home(request):
+    return render(request,'auth/home.html');

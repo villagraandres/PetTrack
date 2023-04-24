@@ -5,4 +5,5 @@ urlpatterns = [
     path('register',views.register,name="register"),
     path('email',views.email,name="email"),
     path('confirm/<str:num>',views.confirm,name="confirm"),
+    path('home',views.home,name="home"),
 ]
