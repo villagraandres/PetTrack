@@ -62,3 +62,118 @@ body{
     margin: 0;
 }
 
+/* Estilos generales para el aside */
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: #fff;
+  z-index: 1000;
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.barra{
+  display: none;
+}
+
+/* Estilos para el logo y el eslogan */
+.brand {
+  padding: 20px;
+  text-align: center;
+}
+
+.brand h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  color: #3a3a3a;
+}
+
+.brand p {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: #8c8c8c;
+}
+
+/* Estilos para el botón de menú */
+.menu-btn {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: none;
+  background-color: transparent;
+  color: #8c8c8c;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Estilos para los enlaces */
+aside a {
+  display: block;
+  padding: 15px 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #3a3a3a;
+  transition: background-color 0.3s ease;
+}
+
+aside a:hover {
+  background-color: #f8f8f8;
+}
+
+/* Estilos para el elemento activo */
+aside .active {
+  background-color: #f8f8f8;
+}
+
+/* Estilos para la sección "My Pets" */
+.myPets {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #3a3a3a;
+}
+
+/* Estilos para la sección "Profile" */
+.profile {
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #3a3a3a;
+}
+
+/* Estilos para la sección "Profile" al pasar el cursor por encima */
+.profile:hover {
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 767px) {
+
+aside{
+  display: none;
+}
+.barra{
+  display: block;
+}
+}

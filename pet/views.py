@@ -10,6 +10,10 @@ import string
 from django.core.mail import send_mail
 from django.db import IntegrityError
 from django.contrib.auth import login
+#import reverse
+from django.urls import reverse
+#import HTTPredirect
+from django.http import HttpResponseRedirect
 
 
 
@@ -28,7 +32,7 @@ def index(request):
         if user.check_password(password):
             if user.auth:
                 login(request,user)
-                return render(request,'auth/home.html')
+                return HttpResponseRedirect(reverse("home"))
             else:
                 return render(request,'login/index.html',{'error':'Please confirm your account'})
         else:
