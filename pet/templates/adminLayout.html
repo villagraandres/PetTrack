@@ -10,13 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link href="{% static 'pets/styles.css' %}" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/6c76bbdb90.js" crossorigin="anonymous"></script>
+ 
     <title>Name</title>
 </head>
 <body>
-    <header>
-       
-    </header>
+  
 
     <div class="barra">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -44,27 +42,33 @@
             </div>
           </nav>
     </div>
-
+<div class=" main-container">
     <aside>
         <div class="brand">
             <h4 class="text-gradient">PetTrack <i class="fa-solid fa-shield-cat"></i></h4>
             <p class="slogan">Keeping your pets on track</p>
         </div>
         <button class="menu-btn">
-            <i class="fas fa-bars"></i>
+           
         </button>
-        <div class="myPets">
-            <p>My pets</p>
-        </div>
-        <div class="profile">
-            <p>Profile</p>
-        </div>
+        <a class="myPets">
+            <p>My pets </p>
+        </a>
+        <a class="profile">
+            <p>Profile </p>
+        </a>
     </aside>
 
-    <main>
-        <!-- Contenido principal aquí -->
+    <main class="mt-5 container">
+      {% block body %}{% endblock body %}
     </main>
 
-    <script src="https://kit.fontawesome.com/6c76bbdb90.js" crossorigin="anonymous"></script>
+  </div>
+  
+    
+    
+ {% block script %}
+{% endblock script %}
+<script src="https://kit.fontawesome.com/6c76bbdb90.js" crossorigin="anonymous"></script>
 </body>
 </html>
